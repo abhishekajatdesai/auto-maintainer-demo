@@ -1,0 +1,14 @@
+id: fix_bug
+namespace: hackathon
+
+inputs:
+  - id: bug_description
+    type: STRING
+    defaults: "Say hello to the hackathon judges"
+
+tasks:
+  - id: run_agent_bridge
+    type: io.kestra.core.tasks.scripts.Bash
+    commands:
+      # We run the python script, which runs Cline
+      - python3 /app/scripts/bridge.py "{{ inputs.bug_description }}"
